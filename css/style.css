@@ -1,0 +1,181 @@
+/* default view */
+/*1. animate the logo*/
+#logo {
+    animation: logoanimate 5s forwards;
+}
+@keyframes logoanimate {
+    from {width: 25px; opacity: 0;}
+    to {width: 475px; opacity: 1;}
+}
+
+/*2. edit body element*/
+body {
+    font-family: 'Poppins', serif;
+    background: #f1f1f1 url("../images/concrete_seamless.png") repeat;
+
+
+      
+}
+
+/*3. edit header tag to use flex to match example*/
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/*4. edit nav_links to use flex to match example*/
+.nav_links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*5.style the links to have the same color after visited*/
+.nav_links a:visited {
+    color: #0000EE;
+}
+.nav_links a:hover {
+    color: #50C7C7;
+}
+
+/*6. style direct children of a card class of only header*/
+.card > header {
+    background: #288080;
+    border: 2px solid #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* 7 card class */
+.card {
+    flex-basis: 450px;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+/*8. pricing class*/
+.pricing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/*9. images in the gallery class*/
+.gallery img {
+    border: solid 10px #50C7C7;
+    margin: 10px;
+    width: 300px;
+    height:210px;
+}
+
+/*10. gallery class (use flex to match exmaple) */
+.gallery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* > 900px example 1200px */
+/*11. edit header tag and nav_links to match example using flex*/
+@media (min-width: 900px) {
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+
+    }
+    .nav_links {
+        flex-direction: row;
+    }
+
+/*12. edit pricing and card classes to match ex.*/
+    .pricing {
+        flex-basis: 275px;
+    }
+    .card {
+        flex-basis: 275px;
+    }
+
+/*13. first header visible at the top even scroll down*/
+    body > header {
+        position: sticky;
+        top: 0;
+        width: 100%;
+    }
+
+}
+
+/* reduced motion */
+/*14. appear but not animated logo */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none;
+        width: 475px;
+        opacity: 1;
+    }
+}
+
+/* print view */
+@media print {
+
+    /*15. body font  */
+    body {
+        font-family: Arial, Helvetica;
+    }
+
+    /*16. remove background image */
+    body {
+        background-image:none;
+    }
+
+    /*17. nv/nav_links spaced */
+    .nav_links {
+        flex-direction: row;
+        justify-content: space-around;
+
+    }
+    .nav_links a {
+        margin: 0 60px;
+    }
+    
+    /*18. pricing class: elements align along the bottom */
+    .pricing {
+        align-items: flex-end;
+
+        display:flex;
+        flex-wrap: nowrap;
+    }
+
+    /*19. card elements*/
+    .card {
+        max-width: 30%;
+        flex-basis: 325px;
+        border: solid 2px #45ADDD;
+
+        
+    }
+
+    /*20. gallery invisible */
+    #gallery {
+        display: none;
+    }
+    .gallery {
+        display: none;
+    }
+    /*21. thumb up */
+    .card ul li:nth-child(2)::after {
+        content: '👍';
+    }
+    /*22. footer in second page */
+    footer {
+        page-break-before: always;
+    }
+      
+
+}
